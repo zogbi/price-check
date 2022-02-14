@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "lodash.merge": "^4.6.2",
     "puppeteer": "^13.3.1"
   }
 }
