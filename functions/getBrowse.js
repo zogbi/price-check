@@ -8,6 +8,7 @@ module.exports = {
             headless: true
         });
         const page = await browser.newPage();
+        await utils.sleep(12000);
         console.log(data);
         await page.goto(data);
         const response = await page.goto(data);
