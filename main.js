@@ -2,6 +2,7 @@ var files = require('./functions/files.js');
 var myBrowse = require('./functions/getBrowse.js');
 var utils = require('./functions/utils.js');
 var slack = require('./functions/slack.js');
+var keys = require('./functions/keys.local.js');
 
 (async () => {
     var arrMyAmazon = [];
@@ -15,7 +16,8 @@ var slack = require('./functions/slack.js');
 
 
     for (const index in arrMyProducts) {
-        const objProduct = await myBrowse.getMyAmazon(arrMyProducts[index]);
+        urlProduct = arrMyProducts[index];
+        const objProduct = await myBrowse.getMyAmazon(urlProduct);
         arrMyAmazon.push(objProduct);
         const results = myReferencePrices.filter(obj => {
             return obj.productID === objProduct.productID;
@@ -24,6 +26,9 @@ var slack = require('./functions/slack.js');
         console.log("atual: ", objProduct);
         if (results[0].productPrice > objProduct.productPrice) {
             console.log("hora de comprar: ", objProduct.productName)
+            myMessage = slack.makeMyMessage("@fabricio.zogbi", objProduct.productName, objProduct.productPrice, urlProduct);
+
+            slack.sendNotify(keys.slack, myMessage);
         } else {
             console.log("não ta valendo a pena")
         }

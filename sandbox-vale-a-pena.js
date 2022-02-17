@@ -1,5 +1,6 @@
 var files = require('./functions/files.js');
-
+var slack = require('./functions/slack.js');
+var keys = require('./functions/keys.local.js');
 const arrTest = files.loadData("stored-result.json");
 const arrTestReference = files.loadData("referencePrice.json");
 
@@ -28,6 +29,9 @@ for (const key in arrTest) {
         console.log(results[0].productPrice, " x ", element.productPrice);
         if (results[0].productPrice > element.productPrice) {
             console.log("hora de comprar: ", element.productName)
+            myMessage = slack.makeMyMessage("@fabricio.zogbi", element.productName, element.productPrice, "https://www.youtube.com/");
+
+            slack.sendNotify(keys.slack, myMessage);
         } else {
             console.log("não ta valendo a pena")
         }

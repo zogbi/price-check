@@ -85,7 +85,7 @@ const messageBody = {
 };
 
 module.exports = {
-    sendNotify: async function (slackWebHookURL) {
+    sendNotify: async function (slackWebHookURL, myMessage) {
         if (!slackWebHookURL) {
             console.error('Please fill in your Webhook URL');
         }
@@ -93,7 +93,7 @@ module.exports = {
         console.log('Sending slack message');
         console.log(slackWebHookURL);
         try {
-            const slackResponse = await module.exports.sendSlackMessage(slackWebHookURL, messageBody);
+            const slackResponse = await module.exports.sendSlackMessage(slackWebHookURL, myMessage);
             console.log('Message response', slackResponse);
         } catch (e) {
             console.error('There was a error with the request', e);
@@ -141,5 +141,41 @@ module.exports = {
             req.write(messageBody);
             req.end();
         });
+    },
+    makeMyMessage: function (channel, product, price, lnk) {
+        const messageBody = {
+            'channel': channel,
+            "username": "PromoBOT",
+            "text": "Tem promoção valendo a pena", // <> are used for linking
+            "icon_emoji": ":moneybag:",
+            "attachments": [ // attachments, here we also use long attachment to use more space
+                {
+                    "color": "#2eb886",
+                    "fields": [{
+                            "title": "Produto",
+                            "value": product,
+                            "short": true
+                        },
+                        {
+                            "title": "Preço",
+                            "value": "R$ " + (price / 100).toFixed(2),
+                            "short": true
+                        }
+                    ],
+                    "actions": [ // Slack supports many kind of different types, we'll use buttons here
+
+                        {
+                            "type": "button",
+                            "text": "ver promoção",
+                            "style": "primary", // you can have buttons styled either primary or danger
+                            "url": lnk
+                        }
+                    ]
+                }
+            ]
+        };
+        return messageBody;
     }
+
+
 }
