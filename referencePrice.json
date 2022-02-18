@@ -1,17 +1,21 @@
 [{
     "productName": "Neve Supreme Papel Higiênico, 24 Rolos",
     "productID": "B07FNFPSWL",
-    "productPrice": "5000"
+    "productPrice": "2600",
+    "productURL": "https://www.amazon.com.br/dp/B07FNFPSWL"
 }, {
     "productName": "Glutamine Pouch - 1kg",
     "productID": "B07LB6XSZJ",
-    "productPrice": "17000"
+    "productPrice": "9900",
+    "productURL": "https://www.amazon.com.br/dp/B07LB6XSZJ"
 }, {
     "productName": "YoPRO Bebida Láctea UHT Chocolate 15g de proteínas 250ml",
     "productID": "B0823BN8FR",
-    "productPrice": "800"
+    "productPrice": "400",
+    "productURL": "https://www.amazon.com.br/dp/B0823BN8FR"
 }, {
     "productName": "Neve Papel Higiênico Toque de Seda, 24 Rolos",
     "productID": "B07FN7T3WD",
-    "productPrice": "3290"
+    "productPrice": "2600",
+    "productURL": "https://www.amazon.com.br/dp/B07FN7T3WD/"
 }]

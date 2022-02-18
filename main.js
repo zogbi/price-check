@@ -6,17 +6,11 @@ var keys = require('./functions/keys.local.js');
 
 (async () => {
     var arrMyAmazon = [];
-    const arrMyProducts = [
-        "https://www.amazon.com.br/dp/B07FNFPSWL",
-        "https://www.amazon.com.br/dp/B07LB6XSZJ",
-        "https://www.amazon.com.br/dp/B0823BN8FR",
-        "https://www.amazon.com.br/dp/B07FN7T3WD/"
-    ];
+
     const myReferencePrices = files.loadData("referencePrice.json");
 
-
-    for (const index in arrMyProducts) {
-        urlProduct = arrMyProducts[index];
+    for (const index in myReferencePrices) {
+        urlProduct = myReferencePrices[index].productURL;
         const objProduct = await myBrowse.getMyAmazon(urlProduct);
         arrMyAmazon.push(objProduct);
         const results = myReferencePrices.filter(obj => {
