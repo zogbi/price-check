@@ -1,6 +1,6 @@
 
-configs/keys.local.js
-configs/referencePrice.local.json
+configs/keys-local.js
+configs/referencePrice-local.json
 
 # Logs
 logs
