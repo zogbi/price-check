@@ -7,6 +7,7 @@ var keys = require('./config/keys.local.js');
 (async () => {
     var arrMyAmazon = [];
 
+    // O arquivo referencePrice.json guarda os produtos que vão ser checados pelo sistema e o preço alvo para disparar o aviso.
     const myReferencePrices = files.loadData("referencePrice.json");
 
     for (const index in myReferencePrices) {
@@ -20,6 +21,8 @@ var keys = require('./config/keys.local.js');
         console.log("atual: ", objProduct);
         if (results[0].productPrice > objProduct.productPrice) {
             console.log("hora de comprar: ", objProduct.productName)
+
+            // a Função esperpera os seguintes parametros slack.makeMyMessage(Canal ou usuário, nome textual do produto, preço atual do produto, URL da loja direto do produto) 
             myMessage = slack.makeMyMessage("@fabricio.zogbi", objProduct.productName, objProduct.productPrice, urlProduct);
 
             slack.sendNotify(keys.slack, myMessage);
@@ -32,9 +35,5 @@ var keys = require('./config/keys.local.js');
 
     console.log("Resposta completa:", arrMyAmazon);
 
-    // files.storeData(arrMyAmazon, "stored-result.json");
-
-    // console.log(files.loadData("stored-result.json"));
-
-
+    files.storeData(arrMyAmazon, "stored-result.json");
 })();
