@@ -1,6 +1,6 @@
-var files = require('./functions/files.js');
-var slack = require('./functions/slack.js');
-var keys = require('./functions/keys.local.js');
+var files = require('./services/files.js');
+var slack = require('./services/slack.js');
+var keys = require('./config/keys.local.js');
 const arrTest = files.loadData("stored-result.json");
 const arrTestReference = files.loadData("referencePrice.json");
 

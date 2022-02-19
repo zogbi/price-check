@@ -1,8 +1,8 @@
-var files = require('./functions/files.js');
-var myBrowse = require('./functions/getBrowse.js');
-var utils = require('./functions/utils.js');
-var slack = require('./functions/slack.js');
-var keys = require('./functions/keys.local.js');
+var files = require('./services/files.js');
+var myBrowse = require('./services/getBrowse.js');
+var utils = require('./services/utils.js');
+var slack = require('./services/slack.js');
+var keys = require('./config/keys.local.js');
 
 (async () => {
     var arrMyAmazon = [];
