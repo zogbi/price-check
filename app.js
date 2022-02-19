@@ -2,7 +2,7 @@ var files = require('./services/files.js');
 var myBrowse = require('./services/getBrowse.js');
 var utils = require('./services/utils.js');
 var slack = require('./services/slack.js');
-var keys = require('./config/keys.local.js');
+var keys = require('./configs/keys.local.js');
 
 (async () => {
     var arrMyAmazon = [];
