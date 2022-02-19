@@ -2,13 +2,13 @@ var files = require('./services/files.js');
 var myBrowse = require('./services/getBrowse.js');
 var utils = require('./services/utils.js');
 var slack = require('./services/slack.js');
-var keys = require('./configs/keys.local.js');
+var keys = require('./configs/keys-local.js');
 
 (async () => {
     var arrMyAmazon = [];
 
     // O arquivo referencePrice.json guarda os produtos que vão ser checados pelo sistema e o preço alvo para disparar o aviso.
-    const myReferencePrices = files.loadData("./configs/referencePrice.local.json");
+    const myReferencePrices = files.loadData("./configs/referencePrice-local.json");
 
     for (const index in myReferencePrices) {
         urlProduct = myReferencePrices[index].productURL;
