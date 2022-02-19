@@ -8,7 +8,7 @@ var keys = require('./configs/keys.local.js');
     var arrMyAmazon = [];
 
     // O arquivo referencePrice.json guarda os produtos que vão ser checados pelo sistema e o preço alvo para disparar o aviso.
-    const myReferencePrices = files.loadData("./config/referencePrice.local.json");
+    const myReferencePrices = files.loadData("./configs/referencePrice.local.json");
 
     for (const index in myReferencePrices) {
         urlProduct = myReferencePrices[index].productURL;
